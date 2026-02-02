@@ -1,1 +1,41 @@
  create table CONSUMER_TBL(Consumer_id varchar2(12) primary key,Full_Name Varchar2(150),Address varchar2(300),Meter_Number Varchar2(30),Connection_Type Varchar2(50),Outstanding_Balance Number(12,2));
+
+INSERT INTO consumer_tbl (consumer_id, full_name, address, meter_number, connection_type, outstanding_balance)
+  VALUES ('CUS1001', 'Ramesh Kumar', '12 MG Road, Pune', 'MTR-5001', 'Domestic', 1200.00);
+
+INSERT INTO consumer_tbl (consumer_id, full_name, address, meter_number, connection_type, outstanding_balance)
+ VALUES ('CUS1002', 'Sunita Desai', '45 Park Avenue, Mumbai', 'MTR-5010', 'Commercial', 0.00);
+ 
+INSERT INTO consumer_tbl (consumer_id, full_name, address, meter_number, connection_type, outstanding_balance)
+  VALUES ('CUS1003', 'Anoop Verma', '78 Residency Rd, Bengaluru', 'MTR-5023', 'Domestic', 450.00);
+
+CREATE TABLE meter_reading_tbl (reading_id     NUMBER PRIMARY KEY,consumer_id    VARCHAR2(12) foreign key references consumer_tbl(consumer_id), meter_number   VARCHAR2(30),
+reading_date   DATE,reading_value  NUMBER,recorded_by    VARCHAR2(50));
+
+ INSERT INTO meter_reading_tbl(reading_id, consumer_id, meter_number, reading_date, reading_value, recorded_by) VALUES
+ (1, 'CUS1001', 'MTR-5001', TO_DATE('2026-01-30', 'YYYY-MM-DD'), 250, 'Admin');
+
+ INSERT INTO meter_reading_tbl (reading_id, consumer_id, meter_number, reading_date, reading_value, recorded_by)VALUES
+(2, 'CUS1002', 'MTR-5010', TO_DATE('2026-01-30', 'YYYY-MM-DD'), 500, 'Admin');
+
+
+ INSERT INTO meter_reading_tbl (reading_id, consumer_id, meter_number, reading_date, reading_value, recorded_by)
+ VALUES(3, 'CUS1003', 'MTR-5023', TO_DATE('2026-01-30', 'YYYY-MM-DD'), 300, 'Admin');
+
+create table bill_tbl(Bill_ID Number(10), Consumer_ID varchar2(12) references Consumer_tbl(Consumer_ID),Billing_Period_From Date,Billing_Period_To Date,Units_Consumed Number(12),Amount Number(12,2),Bill_Date Date,Status Varchar2(20));
+
+INSERT INTO bill_tbl(bill_id, consumer_id, billing_period_from, billing_period_to, units_consumed, amount, bill_date, status)VALUES
+(610001, 'CUS1001', TO_DATE('2025-02-01', 'YYYY-MM-DD'), TO_DATE('2025-02-28', 'YYYY-MM-DD'), 50, 250.00, TO_DATE('2025-03-01', 'YYYY-MM-DD'), 'PENDING');
+
+INSERT INTO bill_tbl(bill_id, consumer_id, billing_period_from, billing_period_to, units_consumed, amount, bill_date, status)VALUES
+(610002, 'CUS1001', TO_DATE('2025-03-01', 'YYYY-MM-DD'), TO_DATE('2025-03-31', 'YYYY-MM-DD'), 50, 250.00, TO_DATE('2025-04-01', 'YYYY-MM-DD'), 'PENDING');
+
+INSERT INTO bill_tbl (bill_id, consumer_id, billing_period_from, billing_period_to, units_consumed, amount, bill_date, status)VALUES
+(610003, 'CUS1003', TO_DATE('2025-03-01', 'YYYY-MM-DD'), TO_DATE('2025-03-31', 'YYYY-MM-DD'), 40, 200.00, TO_DATE('2025-04-01', 'YYYY-MM-DD'), 'PAID');
+
+
+create sequence transactionId_seq1 start with 1000 minvalue 1000 maxvalue 9999  increment by 1;
+select transactionId_seq1.NEXTVAL from dual;
+
+create sequence transactionId_seq2 start with 1000 minvalue 1000 maxvalue 9999 increment by 1;
+select transactionId_seq2.NEXTVAL from dual;
