@@ -1,0 +1,1 @@
+ create table CONSUMER_TBL(Consumer_id varchar2(12) primary key,Full_Name Varchar2(150),Address varchar2(300),Meter_Number Varchar2(30),Connection_Type Varchar2(50),Outstanding_Balance Number(12,2));
