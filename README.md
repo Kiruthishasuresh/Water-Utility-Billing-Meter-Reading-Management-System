@@ -10,5 +10,5 @@ OUTPUT:
 
 PROJECT STRUCTURE:
 
-<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/0d0eeb72-5c11-41cc-bd3d-9a3e2d7a59e4" />
+<img width="250" height="500" alt="image" src="https://github.com/user-attachments/assets/0d0eeb72-5c11-41cc-bd3d-9a3e2d7a59e4" />
 
