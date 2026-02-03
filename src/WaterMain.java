@@ -28,7 +28,7 @@ billingService.getMeterReadingService().findLatestReading("CUS1001");
 MeterReading curr = new MeterReading(); 
 curr.setReadingValue(1350); 
 Calendar cal = Calendar.getInstance();
-cal.set(2025, Calendar.MARCH, 31); // March 31, 2025
+cal.set(2025, Calendar.MARCH, 31); 
 Date currDate = cal.getTime();
 curr.setReadingDate(currDate);
 boolean r = 
